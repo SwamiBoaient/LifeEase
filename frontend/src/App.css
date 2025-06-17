@@ -1,38 +1,165 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
 .App {
-    text-align: center;
+  text-align: center;
 }
 
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+/* Custom animations and styles */
+@keyframes pulse-gentle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+.animate-pulse-gentle {
+  animation: pulse-gentle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+/* Large text and buttons for elderly accessibility */
+.elderly-text {
+  font-size: 1.5rem;
+  line-height: 1.4;
 }
 
-.App-link {
-    color: #61dafb;
+.elderly-button {
+  font-size: 1.25rem;
+  padding: 1rem 2rem;
+  min-height: 3.5rem;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .bg-gradient-to-br {
+    background: white !important;
+  }
+  
+  .text-gray-600 {
+    color: black !important;
+  }
+  
+  .border-gray-300 {
+    border-color: black !important;
+    border-width: 2px !important;
+  }
+}
+
+/* Smooth transitions */
+* {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Custom focus styles for accessibility */
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 3px solid #3B82F6;
+  outline-offset: 2px;
+}
+
+/* Netflix-style profile hover effects */
+.profile-card {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.profile-card:hover {
+  transform: scale(1.1);
+}
+
+/* Face recognition scanning effect */
+@keyframes scan-line {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+.scan-line {
+  animation: scan-line 2s ease-in-out infinite;
+}
+
+/* Loading spinner */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Custom shadows and elevations */
+.shadow-2xl {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.shadow-elder {
+  box-shadow: 0 20px 40px -8px rgba(0, 0, 0, 0.15);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(45deg, #3B82F6, #8B5CF6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Responsive font scaling */
+@media (max-width: 640px) {
+  .elderly-text {
+    font-size: 1.25rem;
+  }
+  
+  .elderly-button {
+    font-size: 1.125rem;
+    padding: 0.875rem 1.5rem;
+    min-height: 3rem;
+  }
+}
+
+/* Print styles */
+@media print {
+  .bg-gradient-to-br,
+  .bg-blue-500,
+  .bg-purple-500 {
+    background: white !important;
+    color: black !important;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .bg-white {
+    background-color: #1F2937 !important;
+    color: white !important;
+  }
+  
+  .text-gray-800 {
+    color: #F9FAFB !important;
+  }
+  
+  .text-gray-600 {
+    color: #D1D5DB !important;
+  }
+  
+  .border-gray-300 {
+    border-color: #4B5563 !important;
+  }
 }
